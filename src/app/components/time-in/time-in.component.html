@@ -1,0 +1,21 @@
+<div class="timein__container">
+    <div class="timein__card">
+        <div>
+            <div class="timein__started" *ngIf="timeIn != null">
+                <i class="fa-solid fa-hourglass-start"></i><p>Started: {{ timeIn | date:'h:mm a' }}</p>
+            </div>
+        </div>
+        <img src="../../../assets/images/Weights-rafiki.png" alt="">
+        <div>
+            <h1>Welcome, John Doe</h1>
+            <p>Start your workout for today by clicking on the button below.</p>
+            <button (click)="TimeIn()">Time In</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- 
+    Ito na lang din notes ko mommy
+    
+-->

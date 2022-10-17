@@ -1,0 +1,64 @@
+.register__grid__container {
+    height: 100%;
+}
+.register__illustration__container {
+    background: url('../../../assets/images/register_illustration.webp') no-repeat center;
+    background-size: cover;
+    display: none;
+}
+.register__form {
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    overflow-y: scroll;
+    div:first-of-type {
+        place-self: start;
+    }
+}
+.register__templogo {
+    max-width: 100px;
+    mix-blend-mode: multiply;
+}
+h1, h3 {
+    font-family: 'Bebas Neue', cursive;
+    color: #20603f;
+}
+h1 {
+    font-size: clamp(56px, 5vw, 100px);
+    letter-spacing: 1px;
+}
+h3 {
+    font-size: clamp(32px, 3vw, 48px);
+}
+p, input, select {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(14px, 2.5vw, 16px);
+}
+button {
+    background-color: #20603f;
+    padding: 8px 32px;
+    width: fit-content;
+    color: #FFF;
+    border-radius: 8px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-top: 3rem;
+    margin-left: auto;
+    transition: all .3s ease-in-out;
+    &:hover {
+        background-color: #16432c;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .register__grid__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .register__illustration__container {
+        display: grid;
+    }
+    .register__form {
+        padding: 64px;
+    }
+}
