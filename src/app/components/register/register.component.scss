@@ -15,13 +15,25 @@
         place-self: start;
     }
 }
+.form-control {
+    background-color: #004643;
+    color: #fffffe;
+    padding: 10px 20px;
+}
+select {
+    padding: 10px 20px;
+}
+::placeholder { 
+    color: #abd1c6;
+    opacity: 1;
+}
 .register__templogo {
     max-width: 100px;
     mix-blend-mode: multiply;
 }
 h1, h3 {
     font-family: 'Bebas Neue', cursive;
-    color: #20603f;
+    color: #001e1d;
 }
 h1 {
     font-size: clamp(56px, 5vw, 100px);
@@ -33,9 +45,10 @@ h3 {
 p, input, select {
     font-family: 'Inter', sans-serif;
     font-size: clamp(14px, 2.5vw, 16px);
+    color: #0f3433;
 }
 button {
-    background-color: #20603f;
+    background-color: #004643;
     padding: 8px 32px;
     width: fit-content;
     color: #FFF;
@@ -47,7 +60,7 @@ button {
     margin-left: auto;
     transition: all .3s ease-in-out;
     &:hover {
-        background-color: #16432c;
+        background-color: #00312f;
     }
 }
 @media screen and (min-width: 1024px) {

@@ -6,13 +6,19 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { TimeInComponent } from './components/time-in/time-in.component';
+import { MembersComponent } from './components/members/members.component';
+import { TransactionsComponent } from './components/transactions/transactions.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    TimeInComponent
+    TimeInComponent,
+    MembersComponent,
+    TransactionsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

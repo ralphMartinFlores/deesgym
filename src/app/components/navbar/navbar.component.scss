@@ -1,0 +1,17 @@
+.navbar {
+    background-color: #004643;
+}
+.navbar-brand {
+    color: #fffffe;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 32px;
+}
+.nav-item {
+    color: #abd1c6;
+    font-family: 'Inter', sans-serif;
+    border-bottom: 2px solid transparent;
+    transition: all .3s;
+    &:hover {
+        border-bottom: 2px solid #abd1c6;
+    }
+}
