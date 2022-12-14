@@ -8,7 +8,7 @@
         <div class="col-12 col-md-6 text-center">
             <img src="assets/images/members-table-illustration.png" alt="Members 3d icon illustration">
         </div>
-        <button class="add__btn rounded-pill ms-auto">Add Member</button>
+        <button class="add__btn rounded-pill ms-auto" data-bs-toggle="modal" data-bs-target="#addMemberModal">Add Member</button>
     </div>
     <div class="table__container table-responsive p-lg-4">
         <table class="table table-borderless">
@@ -160,6 +160,97 @@
                 </div>
                 <div class="modal-footer">
                     <button class="rounded-pill">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Member Modal -->
+    <div class="modal fade" id="addMemberModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add Member</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-lg-6 text-center">
+                            <img src="assets/images/add-member-mascot.png" alt="Add member male illustration">
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <form action="">
+                                <div>
+                                    <div class="row">
+                                        <h3 class="mb-2 form__section__title">Details</h3>
+                                        <div class="col-12 col-md-4">
+                                            <p class="mb-2">First Name</p>
+                                            <input type="text" class="form-control rounded-pill" placeholder="Jane">
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <p class="mb-2 mt-2 mt-md-0">Middle Name</p>
+                                            <input type="text" class="form-control rounded-pill">
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <p class="mb-2 mt-2 mt-md-0">Last Name</p>
+                                            <input type="text" class="form-control rounded-pill" placeholder="Doe">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <h3 class="mb-2 form__section__title">Contact</h3>
+                                        <div class="col-12 col-md-6">
+                                            <p class="mb-2 mt-2 mt-md-0">Phone Number</p>
+                                            <input type="text" class="form-control rounded-pill" placeholder="09xxxxxxxxx">
+                                        </div>
+                                        <div class="col-12 col-md-6"> 
+                                            <p class="mb-2 mt-2 mt-md-0">Email Address</p>
+                                            <input type="email" class="form-control rounded-pill" placeholder="email@address.com">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <h3 class="mb-2 form__section__title">Address</h3>
+                                        <div class="col-12 col-md-6">
+                                            <p class="mb-2 mt-2 mt-md-0">Home Number</p>
+                                            <input type="email" class="form-control rounded-pill">
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <p class="mb-2 mt-2 mt-md-0">Street Name</p>
+                                            <input type="text" class="form-control rounded-pill">
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <p class="mb-2 mt-2">Barangay</p>
+                                            <select class="form-select rounded-pill">
+                                                <option disabled selected value="Barangay">Choose Barangay</option>
+                                                <option value="Asinan">Asinan</option>
+                                                <option value="Banicain">Banicain</option>
+                                                <option value="Barretto">Barretto</option>
+                                                <option value="East Bajac-Bajac">East Bajac-Bajac</option>
+                                                <option value="East Tapinac">East Tapinac</option>
+                                                <option value="Gordon Heights">Gordon Heights</option>
+                                                <option value="Kalaklan">Kalaklan</option>
+                                                <option value="Mabayuan">Mabayuan</option>
+                                                <option value="New CabalanN">New Cabalan</option>
+                                                <option value="New Ilalim">New Ilalim</option>
+                                                <option value="New Kababae">New Kababae</option>
+                                                <option value="Old Cabalan">Old Cabalan</option>
+                                                <option value="Pag-asa">Pag-asa</option>
+                                                <option value="Santa Rita">Santa Rita</option>
+                                                <option value="West Bajac-Bajac">West Bajac-Bajac</option>
+                                                <option value="West Tapinac">West Tapinac</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <p class="mb-2 mt-2">City</p>
+                                            <input type="text" class="form-control rounded-pill">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="rounded-pill">Add Member</button>
                 </div>
             </div>
         </div>
