@@ -87,9 +87,11 @@ table {
 .text-truncate {
     max-width: 200px;
 }
-.table__btn, .delete__btn {
+.table__btn, .table__btn--secondary {
     width: 40px;
     height: 40px;
+    display: grid;
+    place-items: center;
     color: #001e1d;
     border-radius: 50%;
     font-family: 'Bebas Neue', cursive;
@@ -103,12 +105,20 @@ table {
         background-color: #ae8443;
     }
 }
-.delete__btn {
-    background-color: #e16162;
+.table__btn--secondary {
+    border: 2px solid #f9bc60;
+    i {
+        color: #fffffe;
+        transition: all .3s;
+    }
     &:hover {
-        background-color: #9e4445;
+        background-color: #f9bc60;
+        i {
+            color: #001e1d; 
+        }
     }
 }
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .title__illustration__container {
         position: relative;
