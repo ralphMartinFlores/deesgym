@@ -1,0 +1,108 @@
+table {
+  width: 100%;
+  font-family: "General Sans", sans-serif;
+}
+.greetings__flex__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.section__greetings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .illustration__container {
+    display: none;
+  }
+  h1 {
+    font-family: "General Sans", sans-serif;
+    font-size: clamp(32px, 5vw, 64px);
+    margin: 0;
+    color: #001e1d;
+  }
+  p {
+    font-family: "General Sans", sans-serif;
+    font-size: clamp(0.875em, 2.5vw, 1em);
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+    color: #0f3433;
+  }
+}
+td.mat-cell,
+td.mat-footer-cell {
+  padding: 8px;
+}
+.delete__btn {
+  background-color: #e16162;
+  color: #fffffe;
+}
+.btn--primary {
+  background-color: #004643;
+  color: #fffffe;
+  margin-right: 8px;
+}
+.search__input {
+  width: 100%;
+  font-family: "General Sans", sans-serif;
+}
+.add__search__flex__container {
+  .mat-fab {
+    display: none;
+  }
+}
+.search-form {
+  width: 100%;
+}
+mat-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+mat-toolbar mat-icon {
+  color: white;
+}
+mat-sidenav {
+  background-color: #004643;
+  width: 200px;
+}
+.sidenav__icon {
+  margin-right: 20px;
+}
+.mat-list-item {
+  color: #fffffe;
+  font-family: "General Sans", sans-serif;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+@media screen and (min-width: 992px) {
+  .section__greetings {
+    margin-bottom: 1rem;
+    .illustration__container {
+      display: flex;
+    }
+    p {
+      max-width: 60ch;
+    }
+  }
+  .greetings__flex__container {
+    .mat-fab {
+      display: none;
+    }
+  }
+  .add__search__flex__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    .search__input {
+      width: 25%;
+    }
+    .mat-fab {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,115 @@
+<mat-sidenav-container>
+  <!-- Sidenav -->
+  <mat-sidenav
+    #sidenav
+    [mode]="isBiggerScreen() ? 'over' : 'side'"
+    [(opened)]="opened"
+    [fixedInViewport]="true"
+  >
+    <div class="sidenav__logo">
+      <img src="assets/images/temp_logo.png" alt="Brand logo" />
+    </div>
+    <mat-nav-list>
+      <a mat-list-item>
+        <mat-icon class="sidenav__icon">groups</mat-icon>
+        Members
+      </a>
+      <a mat-list-item>
+        <mat-icon class="sidenav__icon">hourglass_empty</mat-icon>
+        Transactions
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <!-- End -->
+  <!-- Main content -->
+  <mat-sidenav-content>
+    <!-- Toolbar -->
+    <mat-toolbar color="primary">
+      <span class="toolbar__heading">Welcome, Admin</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()" color="primary">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <!-- End -->
+    <!-- Content under Toolbar -->
+    <body>
+      <main>
+        <!-- Header and Image Container -->
+        <section>
+          <div class="section__greetings">
+            <div>
+              <div class="greetings__flex__container">
+                <h1>Transactions</h1>
+                <button mat-fab color="primary">
+                  <mat-icon>person_add</mat-icon>
+                </button>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+                quasi accusamus quidem numquam enim quibusdam quis quaerat,
+                nulla sit suscipit.
+              </p>
+            </div>
+            <div class="illustration__container">
+              <img
+                src="assets/images/transactions-table-illustration.svg"
+                alt="People in the gym"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- End -->
+        <!-- Table Container -->
+        <section class="table__container">
+          <!-- Actual Transactions Table -->
+          <div>
+            <table mat-table [dataSource]="dataSource">
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef>No.</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.position }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+              </ng-container>
+              <ng-container matColumnDef="timein">
+                <th mat-header-cell *matHeaderCellDef>Time In</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.timein }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="timeout">
+                <th mat-header-cell *matHeaderCellDef>Time Out</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.timeout }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button class="btn--primary">
+                    <mat-icon>hourglass_top</mat-icon>
+                  </button>
+                  <button mat-icon-button class="btn--secondary">
+                    <mat-icon>hourglass_bottom</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <mat-paginator
+              [pageSizeOptions]="[5, 10, 20]"
+              showFirstLastButtons
+              aria-label="Select page of periodic elements"
+            >
+            </mat-paginator>
+          </div>
+        </section>
+      </main>
+    </body>
+  </mat-sidenav-content>
+</mat-sidenav-container>

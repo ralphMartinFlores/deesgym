@@ -1,0 +1,73 @@
+<div>
+  <div>
+    <h1>Edit Member</h1>
+  </div>
+  <div class="illustration__container">
+    <img
+      src="assets/images/edit-member-male-illustration.svg"
+      alt="Edit member illustration"
+      loading="lazy"
+    />
+  </div>
+  <div>
+    <form action="">
+      <div>
+        <p class="form__header">Details</p>
+        <div class="form__flex__container">
+          <mat-form-field class="example-full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="John" />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Middle Name</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Doe" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <p class="form__header">Contact</p>
+        <div class="form__flex__container">
+          <mat-form-field class="example-full-width">
+            <mat-label>Contact #</mat-label>
+            <input matInput placeholder="09xxxxxxxxx" />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="johndoe@email.com" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <p class="form__header">Address</p>
+        <div class="form__flex__container">
+          <mat-form-field class="example-full-width">
+            <mat-label>House Number</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Street Name</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Barangay</mat-label>
+            <mat-select>
+              <mat-option>Sample Option</mat-option>
+              <mat-option>Sample Option</mat-option>
+              <mat-option>Sample Option</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal__btn">
+    <button mat-flat-button color="primary">Save Changes</button>
+    <button mat-stroked-button color="primary" mat-dialog-close="">
+      Cancel
+    </button>
+  </div>
+</div>
