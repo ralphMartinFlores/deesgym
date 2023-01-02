@@ -10,6 +10,7 @@ import { MembersTableComponent } from './components/members-table/members-table.
 import { EditMemberComponent } from './components/edit-member/edit-member.component';
 import { AddMemberComponent } from './components/add-member/add-member.component';
 import { TransactionsTableComponent } from './components/transactions-table/transactions-table.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TransactionsTableComponent } from './components/transactions-table/tran
     EditMemberComponent,
     AddMemberComponent,
     TransactionsTableComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

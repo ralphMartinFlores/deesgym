@@ -9,6 +9,12 @@
   button {
     font-family: "General Sans", sans-serif;
   }
+  .mat-flat-button {
+    transition: all 0.3s;
+    &:hover {
+      background-color: #007974;
+    }
+  }
 }
 .illustration__container {
   display: none;

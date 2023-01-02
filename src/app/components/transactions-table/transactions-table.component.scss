@@ -33,18 +33,22 @@ td.mat-cell,
 td.mat-footer-cell {
   padding: 8px;
 }
-.delete__btn {
-  background-color: #e16162;
-  color: #fffffe;
-}
 .btn--primary {
   background-color: #004643;
   color: #fffffe;
   margin-right: 8px;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #007974;
+  }
 }
 .btn--secondary {
   background-color: #f9bc60;
   color: #001e1d;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #f7a72f;
+  }
 }
 .search__input {
   width: 100%;
