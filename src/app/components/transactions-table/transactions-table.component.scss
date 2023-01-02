@@ -80,6 +80,15 @@ mat-sidenav {
 .example-spacer {
   flex: 1 1 auto;
 }
+.isActive {
+  border-radius: 0 25px 25px 0;
+  background-color: #f9bc60;
+  color: #001e1d;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #f7a72f;
+  }
+}
 @media screen and (min-width: 992px) {
   .section__greetings {
     margin-bottom: 2rem;

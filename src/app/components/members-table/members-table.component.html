@@ -7,10 +7,10 @@
     [fixedInViewport]="true"
   >
     <div class="sidenav__logo">
-      <img src="assets/images/temp_logo.png" alt="Brand logo" />
+      <img src="assets/images/deesgym_logo.png" alt="Brand logo" />
     </div>
     <mat-nav-list>
-      <a mat-list-item>
+      <a mat-list-item class="isActive">
         <mat-icon class="sidenav__icon">groups</mat-icon>
         Members
       </a>
@@ -41,7 +41,13 @@
             <div>
               <div class="greetings__flex__container">
                 <h1>Members</h1>
-                <button mat-fab color="primary" (click)="openAddMemberDialog()">
+                <button
+                  mat-fab
+                  color="primary"
+                  (click)="openAddMemberDialog()"
+                  matTooltip="Add a member"
+                  matTooltipPosition="above"
+                >
                   <mat-icon>person_add</mat-icon>
                 </button>
               </div>
@@ -73,7 +79,13 @@
                 </button>
               </mat-form-field>
             </form>
-            <button mat-fab color="primary" (click)="openAddMemberDialog()">
+            <button
+              mat-fab
+              color="primary"
+              (click)="openAddMemberDialog()"
+              matTooltip="Add a member"
+              matTooltipPosition="above"
+            >
               <mat-icon>person_add</mat-icon>
             </button>
           </div>
@@ -109,15 +121,17 @@
                   <button
                     mat-icon-button
                     class="btn--primary"
-                    aria-label="Example icon button with a home icon"
                     (click)="openDialog()"
+                    matTooltip="Update details of this member"
+                    matTooltipPosition="above"
                   >
                     <mat-icon>edit</mat-icon>
                   </button>
                   <button
                     mat-icon-button
                     class="delete__btn"
-                    aria-label="Example icon button with a home icon"
+                    matTooltip="Remove this member"
+                    matTooltipPosition="above"
                   >
                     <mat-icon>delete</mat-icon>
                   </button>

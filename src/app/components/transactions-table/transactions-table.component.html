@@ -7,14 +7,14 @@
     [fixedInViewport]="true"
   >
     <div class="sidenav__logo">
-      <img src="assets/images/temp_logo.png" alt="Brand logo" />
+      <img src="assets/images/deesgym_logo.png" alt="Brand logo" />
     </div>
     <mat-nav-list>
       <a mat-list-item>
         <mat-icon class="sidenav__icon">groups</mat-icon>
         Members
       </a>
-      <a mat-list-item>
+      <a mat-list-item class="isActive">
         <mat-icon class="sidenav__icon">hourglass_empty</mat-icon>
         Transactions
       </a>
@@ -90,10 +90,20 @@
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef>Action</th>
                 <td mat-cell *matCellDef="let element">
-                  <button mat-icon-button class="btn--primary">
+                  <button
+                    mat-icon-button
+                    class="btn--primary"
+                    matTooltip="Time In"
+                    matTooltipPosition="above"
+                  >
                     <mat-icon>hourglass_top</mat-icon>
                   </button>
-                  <button mat-icon-button class="btn--secondary">
+                  <button
+                    mat-icon-button
+                    class="btn--secondary"
+                    matTooltip="Time Out"
+                    matTooltipPosition="above"
+                  >
                     <mat-icon>hourglass_bottom</mat-icon>
                   </button>
                 </td>

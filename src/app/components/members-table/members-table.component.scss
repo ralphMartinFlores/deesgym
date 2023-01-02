@@ -82,6 +82,15 @@ mat-sidenav {
   color: #fffffe;
   font-family: "General Sans", sans-serif;
 }
+.isActive {
+  border-radius: 0 25px 25px 0;
+  background-color: #f9bc60;
+  color: #001e1d;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #f7a72f;
+  }
+}
 .example-spacer {
   flex: 1 1 auto;
 }
