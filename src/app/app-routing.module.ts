@@ -5,7 +5,7 @@ import { MembersTableComponent } from './components/members-table/members-table.
 import { TransactionsTableComponent } from './components/transactions-table/transactions-table.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'members', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'members', component: MembersTableComponent },
   { path: 'login', component: LoginComponent },
   { path: 'transactions', component: TransactionsTableComponent },

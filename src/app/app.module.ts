@@ -11,6 +11,8 @@ import { EditMemberComponent } from './components/edit-member/edit-member.compon
 import { AddMemberComponent } from './components/add-member/add-member.component';
 import { TransactionsTableComponent } from './components/transactions-table/transactions-table.component';
 import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,12 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent,
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
