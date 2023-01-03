@@ -6,8 +6,15 @@
   display: flex;
   justify-content: end;
   gap: 8px;
+  margin-top: 16px;
   button {
     font-family: "General Sans", sans-serif;
+  }
+  .mat-flat-button {
+    transition: all 0.3s;
+    &:hover {
+      background-color: #007974;
+    }
   }
 }
 .illustration__container {
@@ -20,6 +27,17 @@
 }
 h1 {
   color: #001e1d;
+}
+.modal__header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  button {
+    transition: all 0.3s;
+    &:hover {
+      background-color: #e6edec;
+    }
+  }
 }
 @media screen and (min-width: 768px) {
   .form__flex__container {
