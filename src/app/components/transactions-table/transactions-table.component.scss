@@ -59,9 +59,9 @@ td.mat-footer-cell {
 }
 mat-toolbar {
   position: sticky;
-  position: -webkit-sticky; /* For macOS/iOS Safari */
-  top: 0; /* Sets the sticky toolbar to be on top */
-  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
 }
 mat-toolbar mat-icon {
   color: white;
@@ -89,6 +89,9 @@ mat-sidenav {
     background-color: #f7a72f;
   }
 }
+.desktop__fab {
+  display: none;
+}
 @media screen and (min-width: 992px) {
   .section__greetings {
     margin-bottom: 2rem;
@@ -103,5 +106,10 @@ mat-sidenav {
     .mat-fab {
       display: none;
     }
+  }
+  .desktop__fab {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 1.5rem;
   }
 }

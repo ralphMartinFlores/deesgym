@@ -7,6 +7,8 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
 
 @Component({
   selector: 'app-transactions-table',
@@ -22,7 +24,17 @@ export class TransactionsTableComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
+
+  openAddTransactionDialog() {
+    let dialogRef = this.dialog.open(AddTransactionComponent, {
+      width: '400px',
+      height: '90vh',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Add transaction modal closed.');
+    });
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

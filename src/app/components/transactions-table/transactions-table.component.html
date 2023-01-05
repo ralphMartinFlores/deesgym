@@ -41,7 +41,11 @@
             <div>
               <div class="greetings__flex__container">
                 <h1>Transactions</h1>
-                <button mat-fab color="primary">
+                <button
+                  mat-fab
+                  color="primary"
+                  (click)="openAddTransactionDialog()"
+                >
                   <mat-icon>person_add</mat-icon>
                 </button>
               </div>
@@ -55,10 +59,18 @@
               <img
                 src="assets/images/transactions-table-illustration.svg"
                 alt="People in the gym"
+                width="300px"
               />
             </div>
           </div>
         </section>
+        <!-- End -->
+        <!-- Desktop FAB Container -->
+        <div class="desktop__fab">
+          <button mat-fab color="primary" (click)="openAddTransactionDialog()">
+            <mat-icon>person_add</mat-icon>
+          </button>
+        </div>
         <!-- End -->
         <!-- Table Container -->
         <section class="table__container">

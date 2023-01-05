@@ -11,8 +11,9 @@ import { EditMemberComponent } from './components/edit-member/edit-member.compon
 import { AddMemberComponent } from './components/add-member/add-member.component';
 import { TransactionsTableComponent } from './components/transactions-table/transactions-table.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AddTransactionComponent } from './components/add-transaction/add-transaction.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AddMemberComponent,
     TransactionsTableComponent,
     LoginComponent,
+    AddTransactionComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -29,6 +31,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

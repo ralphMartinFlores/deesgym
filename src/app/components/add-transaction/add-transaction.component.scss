@@ -1,0 +1,58 @@
+.example-full-width {
+  width: 100%;
+  font-family: "General Sans", sans-serif;
+}
+.modal__btn {
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+  margin-top: 16px;
+  button {
+    font-family: "General Sans", sans-serif;
+  }
+  .mat-flat-button {
+    transition: all 0.3s;
+    &:hover {
+      background-color: #007974;
+    }
+  }
+}
+.illustration__container {
+  display: none;
+}
+.form__header {
+  font-weight: 600;
+  font-size: 24px;
+  color: #001e1d;
+}
+h1 {
+  color: #001e1d;
+}
+.modal__header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  button {
+    transition: all 0.3s;
+    &:hover {
+      background-color: #e6edec;
+    }
+  }
+}
+mat-radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  mat-radio-button {
+    font-family: "General Sans", sans-serif;
+  }
+}
+@media screen and (min-width: 768px) {
+  .illustration__container {
+    display: block;
+    text-align: center;
+    img {
+      max-width: 70%;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+<div>
+  <div class="modal__header__container">
+    <h1>Add Transaction</h1>
+    <button mat-icon-button color="primary" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="illustration__container">
+    <img
+      src="assets/images/add-transaction-illustration.svg"
+      alt="Add transaction illustration"
+      loading="lazy"
+    />
+  </div>
+  <div>
+    <form [formGroup]="form">
+      <div>
+        <p class="form__header">Type</p>
+        <mat-radio-group
+          aria-label="Choose membership type"
+          color="primary"
+          formControlName="radio"
+        >
+          <mat-radio-button [value]="1">Walk In</mat-radio-button>
+          <mat-radio-button [value]="2">Member</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </form>
+    <div class="form__member" *ngIf="form.value.radio == 2">
+      <mat-form-field class="example-full-width">
+        <mat-label>Search for a member</mat-label>
+        <input matInput placeholder="Juan Dela Cruz" />
+        <button matSuffix mat-icon-button aria-label="Search">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="form__walkin" *ngIf="form.value.radio == 1">
+      <p class="form__header">Details</p>
+      <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="Juan" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Middle Name</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Dela Cruz" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="modal__btn">
+    <button mat-flat-button color="primary">Finish Transaction</button>
+    <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
+  </div>
+</div>
