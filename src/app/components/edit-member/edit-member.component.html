@@ -68,7 +68,9 @@
     </form>
   </div>
   <div class="modal__btn">
-    <button mat-flat-button color="primary">Save Changes</button>
+    <button mat-flat-button color="primary" (click)="updateMemberAlert()">
+      Save Changes
+    </button>
     <button mat-stroked-button color="primary" mat-dialog-close="">
       Cancel
     </button>

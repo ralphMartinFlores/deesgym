@@ -67,6 +67,12 @@ mat-toolbar {
   position: -webkit-sticky;
   top: 0;
   z-index: 1000;
+  button {
+    transition: all 0.3s;
+    &:hover {
+      background-color: #007974;
+    }
+  }
 }
 mat-toolbar mat-icon {
   color: white;
@@ -99,6 +105,10 @@ mat-sidenav {
   &:hover {
     background-color: #007974;
   }
+}
+img {
+  max-width: 100%;
+  height: auto;
 }
 @media screen and (min-width: 992px) {
   .section__greetings {

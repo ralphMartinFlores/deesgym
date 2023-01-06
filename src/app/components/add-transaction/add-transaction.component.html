@@ -51,8 +51,13 @@
       </mat-form-field>
     </div>
   </div>
-  <div class="modal__btn">
-    <button mat-flat-button color="primary">Finish Transaction</button>
+  <div
+    class="modal__btn"
+    *ngIf="form.value.radio == 1 || form.value.radio == 2"
+  >
+    <button mat-flat-button color="primary" (click)="addTransactionAlert()">
+      Finish Transaction
+    </button>
     <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
   </div>
 </div>

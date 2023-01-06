@@ -13,6 +13,7 @@ import { AddMemberComponent } from '../add-member/add-member.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-members-table',
@@ -28,24 +29,27 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(public dialog: MatDialog, private ds: DataService, private router: Router) {}
+  constructor(
+    public dialog: MatDialog,
+    private ds: DataService,
+    private router: Router
+  ) {}
 
   members: any;
   member: any = [];
 
   ngOnInit(): void {
-    this.getMembers()
+    this.getMembers();
   }
 
-  
   getMembers() {
-    this.ds._httpRequest('members', null, 1).subscribe((data:any)=>{
-      this.members = data.payload
+    this.ds._httpRequest('members', null, 1).subscribe((data: any) => {
+      this.members = data.payload;
     });
   }
 
   onSubmit(e: any) {
-    let f = e.target.elements
+    let f = e.target.elements;
     let load = {
       member_fname: f.fname.value,
       member_mname: f.mname.value,
@@ -56,23 +60,22 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
       member_street: f.street.value,
       member_barangay: f.barangay.value,
       member_city: f.city.value,
-    }
+    };
 
-    this.ds._httpRequest('members/add', load, 2).subscribe((data:any)=>{
-      if(data.code == 200) {
-
+    this.ds._httpRequest('members/add', load, 2).subscribe((data: any) => {
+      if (data.code == 200) {
       }
     });
-    console.log(load)
+    console.log(load);
   }
 
   editMember(member: any) {
     this.member = member;
-    console.log(this.member)
+    console.log(this.member);
   }
 
   editMemberRecord(member: any) {
-    console.log(member)
+    console.log(member);
   }
 
   openDialog() {
@@ -126,6 +129,27 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
     } else {
       return false;
     }
+  }
+
+  removeMemberAlert() {
+    Swal.fire({
+      title: 'Wait a second',
+      text: 'Are you sure you want to remove this member?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#004643',
+      cancelButtonColor: '#e16162',
+      confirmButtonText: 'Yes, remove this member.',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Success',
+          text: 'Member has been removed.',
+          icon: 'success',
+          confirmButtonColor: '#004643',
+        });
+      }
+    });
   }
 }
 
