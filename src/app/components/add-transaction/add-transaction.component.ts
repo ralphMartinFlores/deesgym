@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-transaction.component.scss'],
 })
 export class AddTransactionComponent implements OnInit {
+  filterTerm!: string;
   message: any;
   private subs: Subscription;
   memberAutoComplete = new FormControl('');

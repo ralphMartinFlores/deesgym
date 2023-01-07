@@ -22,7 +22,15 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./members-table.component.scss'],
 })
 export class MembersTableComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['name', 'contact', 'email', 'address', 'membership_date', 'membership_exp', 'action'];
+  displayedColumns: string[] = [
+    'name',
+    'contact',
+    'email',
+    'address',
+    'membership_date',
+    'membership_exp',
+    'action',
+  ];
 
   opened = true;
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
@@ -32,8 +40,12 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
   message: any;
   private subs: Subscription;
 
-  constructor(public dialog: MatDialog, private ds: DataService, private router: Router) {
-    this.subs = this.ds.getUpdate().subscribe(message => {
+  constructor(
+    public dialog: MatDialog,
+    private ds: DataService,
+    private router: Router
+  ) {
+    this.subs = this.ds.getUpdate().subscribe((message) => {
       this.message = message;
       this.ngOnInit();
     });
@@ -50,20 +62,20 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
   sendMessage(): void {
     this.ds.sendUpdate('Message from Sender Component to Receiver Component!');
   }
-  
+
   getMembers() {
-    this.ds._httpRequest('members', null, 1).subscribe((data:any)=>{
-      this.members = data.payload
+    this.ds._httpRequest('members', null, 1).subscribe((data: any) => {
+      this.members = data.payload;
       this.dataSource = new MatTableDataSource<MembersData>(this.members);
-      console.log(this.members)
-      console.log(this.dataSource)
-      this.dataSource.paginator = this.paginator;  
+      console.log(this.members);
+      console.log(this.dataSource);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
   editMember(member: any) {
     this.ds.SharedData = member;
-    this.openDialog()
+    this.openDialog();
   }
 
   deleteMember(member_id: any) {
@@ -77,17 +89,19 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
       confirmButtonText: 'Yes, remove this member.',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.ds._httpRequest('members/remove/' + member_id, null, 2).subscribe((data:any)=>{
-          if(data.code == 200) {
-            this.sendMessage();
-            Swal.fire({
-              title: 'Success',
-              text: 'Member has been removed.',
-              icon: 'success',
-              confirmButtonColor: '#004643',
-            });
-          }
-        });
+        this.ds
+          ._httpRequest('members/remove/' + member_id, null, 2)
+          .subscribe((data: any) => {
+            if (data.code == 200) {
+              this.sendMessage();
+              Swal.fire({
+                title: 'Success',
+                text: 'Member has been removed.',
+                icon: 'success',
+                confirmButtonColor: '#004643',
+              });
+            }
+          });
       }
     });
   }
@@ -145,8 +159,7 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
     }
   }
 
-  removeMemberAlert() {
-  }
+  removeMemberAlert() {}
 }
 
-export interface MembersData { }
+export interface MembersData {}

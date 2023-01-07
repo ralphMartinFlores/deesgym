@@ -105,7 +105,11 @@
               </ng-container>
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef>Name</th>
-                <td mat-cell *matCellDef="let element">{{ element.member_fname }} {{ element.member_mname }} {{ element.member_lname }}</td>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.member_fname }}
+                  {{ element.member_mname }}
+                  {{ element.member_lname }}
+                </td>
               </ng-container>
               <ng-container matColumnDef="contact">
                 <th mat-header-cell *matHeaderCellDef>Contact</th>
@@ -122,19 +126,20 @@
               <ng-container matColumnDef="address">
                 <th mat-header-cell *matHeaderCellDef>Address</th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.member_houseno }} {{ element.member_street }} {{ element.member_barangay }} {{ element.member_city }}
+                  {{ element.member_houseno }} {{ element.member_street }}
+                  {{ element.member_barangay }} {{ element.member_city }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="membership_date">
                 <th mat-header-cell *matHeaderCellDef>Membership Date</th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.member_membershipdate }}
+                  {{ element.member_membershipdate | date : "mediumDate" }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="membership_exp">
                 <th mat-header-cell *matHeaderCellDef>Membership Expiration</th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.member_membershipexp }}
+                  {{ element.member_membershipexp | date : "mediumDate" }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="action">

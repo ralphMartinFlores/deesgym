@@ -51,12 +51,13 @@
           [matAutocomplete]="auto"
           matInput
           placeholder="Juan Dela Cruz"
+          [(ngModel)]="filterTerm"
         />
         <button matSuffix mat-icon-button aria-label="Search">
           <mat-icon>search</mat-icon>
         </button>
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let member of members">
+          <mat-option *ngFor="let member of members | filter : filterTerm">
             {{ member.member_fname }} {{ member.member_mname }}
             {{ member.member_lname }}
           </mat-option>

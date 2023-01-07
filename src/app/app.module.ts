@@ -16,6 +16,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AddTransactionComponent } from './components/add-transaction/add-transaction.component';
 import { RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule,
   ],
   providers: [HttpClient, DatePipe],
   bootstrap: [AppComponent],
