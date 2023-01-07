@@ -83,44 +83,66 @@
               <ng-container matColumnDef="position">
                 <th mat-header-cell *matHeaderCellDef>No.</th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.position }}
+                  {{ element.trans_id }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef>Name</th>
-                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.trans_name }}</td>
+              </ng-container>
+              <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef>Type</th>
+                <td mat-cell *matCellDef="let element">{{ element.trans_type }}</td>
+              </ng-container>
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let element">{{ element.trans_date }}</td>
               </ng-container>
               <ng-container matColumnDef="timein">
                 <th mat-header-cell *matHeaderCellDef>Time In</th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.timein }}
+                  {{ element.trans_timein }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="timeout">
                 <th mat-header-cell *matHeaderCellDef>Time Out</th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.timeout }}
+                  {{ element.trans_timeout }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef>Action</th>
                 <td mat-cell *matCellDef="let element">
-                  <button
+                  <div *ngIf="element.trans_timeout == null">
+                    <button 
+                      mat-icon-button
+                      class="btn--secondary"
+                      matTooltip="Time Out"
+                      matTooltipPosition="above"
+                      (click)="timeOut(element.trans_id)"
+                    >
+                      <mat-icon>hourglass_bottom</mat-icon>
+                    </button>
+                  </div>
+                  <div *ngIf="element.trans_timeout != null">
+                    <button 
+                      disabled
+                      mat-icon-button
+                      class="btn--secondary"
+                      matTooltip="Time Out"
+                      matTooltipPosition="above"
+                    >
+                      <mat-icon>hourglass_bottom</mat-icon>
+                    </button>
+                  </div>
+                  <!-- <button
                     mat-icon-button
                     class="btn--primary"
                     matTooltip="Time In"
                     matTooltipPosition="above"
                   >
                     <mat-icon>hourglass_top</mat-icon>
-                  </button>
-                  <button
-                    mat-icon-button
-                    class="btn--secondary"
-                    matTooltip="Time Out"
-                    matTooltipPosition="above"
-                  >
-                    <mat-icon>hourglass_bottom</mat-icon>
-                  </button>
+                  </button> -->
                 </td>
               </ng-container>
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -24,7 +24,9 @@ export class AddMemberComponent implements OnInit {
   }
 
   onSubmit(e: any) {
-    let date = new Date()
+    let memdate = new Date()
+    let expdate = new Date()
+    expdate.setMonth(expdate.getMonth()+1);
     let f = e.target.elements
     let load = {
       member_fname: f.fname.value,
@@ -36,8 +38,8 @@ export class AddMemberComponent implements OnInit {
       member_street: f.street.value,
       member_barangay: f.barangay.value,
       member_city: f.city.value,
-      member_membershipdate: new Date(),
-      member_membershipexp: date.toISOString().slice(0,10)
+      member_membershipdate: memdate.toISOString().slice(0,10),
+      member_membershipexp: expdate.toISOString().slice(0,10)
     }
 
     Swal.fire({

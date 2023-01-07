@@ -36,28 +36,27 @@
       </mat-form-field>
     </div>
     <div class="form__walkin" *ngIf="form.value.radio == 1">
-      <p class="form__header">Details</p>
-      <mat-form-field class="example-full-width">
-        <mat-label>First Name</mat-label>
-        <input matInput placeholder="Juan" />
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Middle Name</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Dela Cruz" />
-      </mat-form-field>
+      <form (submit)="onSubmit($event)">
+        <p class="form__header">Details</p>
+        <mat-form-field class="example-full-width">
+          <mat-label>First Name</mat-label>
+          <input id="fname" matInput placeholder="Juan" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Middle Name</mat-label>
+          <input id="mname" matInput />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Last Name</mat-label>
+          <input id="lname" matInput placeholder="Dela Cruz" />
+        </mat-form-field>
+        <div class="modal__btn">
+          <button type="submit" mat-flat-button color="primary">
+            Finish Transaction
+          </button>
+          <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
+        </div>
+      </form>
     </div>
-  </div>
-  <div
-    class="modal__btn"
-    *ngIf="form.value.radio == 1 || form.value.radio == 2"
-  >
-    <button mat-flat-button color="primary" (click)="addTransactionAlert()">
-      Finish Transaction
-    </button>
-    <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
   </div>
 </div>

@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AddTransactionComponent } from './components/add-transaction/add-transaction.component';
 import { RouterModule } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     ReactiveFormsModule,
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -128,13 +128,13 @@
               <ng-container matColumnDef="membership_date">
                 <th mat-header-cell *matHeaderCellDef>Membership Date</th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.created_at | date: 'yyyy-MM-dd' }}
+                  {{ element.member_membershipdate }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="membership_exp">
                 <th mat-header-cell *matHeaderCellDef>Membership Expiration</th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.created_at | date: 'yyyy-MM-dd' }}
+                  {{ element.member_membershipexp }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="action">
