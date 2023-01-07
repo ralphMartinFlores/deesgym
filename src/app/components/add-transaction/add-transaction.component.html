@@ -27,12 +27,40 @@
       </div>
     </form>
     <div class="form__member" *ngIf="form.value.radio == 2">
+      <!-- <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Number</mat-label>
+        <input
+          type="text"
+          placeholder="Pick one"
+          aria-label="Number"
+          matInput
+          [formControl]="memberAutoComplete"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let member of members">
+            {{ member.member_fname }} {{ member.member_mname }}
+            {{ member.member_lname }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field> -->
       <mat-form-field class="example-full-width">
         <mat-label>Search for a member</mat-label>
-        <input matInput placeholder="Juan Dela Cruz" />
+        <input
+          [formControl]="memberAutoComplete"
+          [matAutocomplete]="auto"
+          matInput
+          placeholder="Juan Dela Cruz"
+        />
         <button matSuffix mat-icon-button aria-label="Search">
           <mat-icon>search</mat-icon>
         </button>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let member of members">
+            {{ member.member_fname }} {{ member.member_mname }}
+            {{ member.member_lname }}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
     </div>
     <div class="form__walkin" *ngIf="form.value.radio == 1">
@@ -54,7 +82,9 @@
           <button type="submit" mat-flat-button color="primary">
             Finish Transaction
           </button>
-          <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
+          <button mat-stroked-button color="primary" mat-dialog-close>
+            Cancel
+          </button>
         </div>
       </form>
     </div>

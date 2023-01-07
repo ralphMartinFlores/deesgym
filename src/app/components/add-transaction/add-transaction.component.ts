@@ -17,17 +17,23 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-transaction.component.scss'],
 })
 export class AddTransactionComponent implements OnInit {
-
   message: any;
   private subs: Subscription;
+  memberAutoComplete = new FormControl('');
 
   members: any = [];
   form: FormGroup;
-  constructor(private fb: FormBuilder, private ds: DataService, private datepipe: DatePipe, private dialog: MatDialog) {
-    this.subs = this.ds.getUpdate().subscribe(message => {
+  constructor(
+    private fb: FormBuilder,
+    private ds: DataService,
+    private datepipe: DatePipe,
+    private dialog: MatDialog
+  ) {
+    this.subs = this.ds.getUpdate().subscribe((message) => {
       this.message = message;
       this.ngOnInit();
-    });}
+    });
+  }
 
   ngOnInit(): void {
     this.getMembers();
@@ -41,26 +47,27 @@ export class AddTransactionComponent implements OnInit {
   }
 
   getMembers() {
-    this.ds._httpRequest('members', null, 1).subscribe((data:any)=>{
-      this.members = data.payload
+    this.ds._httpRequest('members', null, 1).subscribe((data: any) => {
+      this.members = data.payload;
+      console.log(this.members);
     });
   }
 
   onSubmit(e: any) {
-    let date = new Date()
-    let type = ''
-    if(this.form.value.radio == 1) {
-      type = 'Walk-In'
+    let date = new Date();
+    let type = '';
+    if (this.form.value.radio == 1) {
+      type = 'Walk-In';
     } else {
-      type = 'Member'
+      type = 'Member';
     }
-    let f = e.target.elements
+    let f = e.target.elements;
     let load = {
-      trans_name: f.lname.value + ', ' +f.fname.value + ' ' + f.mname.value,
+      trans_name: f.lname.value + ', ' + f.fname.value + ' ' + f.mname.value,
       trans_type: type,
       trans_date: this.datepipe.transform(date, 'yyyy-MM-dd'),
-      trans_timein: this.datepipe.transform(date, 'hh:mm a')
-    }
+      trans_timein: this.datepipe.transform(date, 'hh:mm a'),
+    };
 
     Swal.fire({
       title: 'All good?',
@@ -72,21 +79,23 @@ export class AddTransactionComponent implements OnInit {
       confirmButtonText: 'Yes, complete transaction.',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.ds._httpRequest('transactions/add', load, 2).subscribe((data:any)=>{
-          if(data.code == 200) {
-            this.sendMessage();
-            Swal.fire({
-              title: 'Success',
-              text: 'This transaction has been made.',
-              icon: 'success',
-              confirmButtonColor: '#004643',
-            });
-            this.dialog.closeAll();
-          }
-        });
+        this.ds
+          ._httpRequest('transactions/add', load, 2)
+          .subscribe((data: any) => {
+            if (data.code == 200) {
+              this.sendMessage();
+              Swal.fire({
+                title: 'Success',
+                text: 'This transaction has been made.',
+                icon: 'success',
+                confirmButtonColor: '#004643',
+              });
+              this.dialog.closeAll();
+            }
+          });
       }
     });
-    console.log(load)
+    console.log(load);
   }
 
   addTransactionAlert() {

@@ -32,6 +32,9 @@ table {
 td.mat-cell,
 td.mat-footer-cell {
   padding: 8px;
+  &:last-of-type {
+    display: flex;
+  }
 }
 .delete__btn {
   background-color: #e16162;
