@@ -5,6 +5,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,12 +14,21 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-transaction.component.scss'],
 })
 export class AddTransactionComponent implements OnInit {
+
+  members: any = [];
   form: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private ds: DataService) {}
 
   ngOnInit(): void {
+    this.getMembers();
     this.form = this.fb.group({
       radio: new FormControl('', Validators.required),
+    });
+  }
+
+  getMembers() {
+    this.ds._httpRequest('members', null, 1).subscribe((data:any)=>{
+      this.members = data.payload
     });
   }
 

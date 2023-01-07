@@ -22,7 +22,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./members-table.component.scss'],
 })
 export class MembersTableComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['name', 'contact', 'email', 'address', 'membership_date', 'action'];
+  displayedColumns: string[] = ['name', 'contact', 'email', 'address', 'membership_date', 'membership_exp', 'action'];
 
   opened = true;
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;

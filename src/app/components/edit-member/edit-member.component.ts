@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DataService } from 'src/app/services/data.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-member',
@@ -11,7 +12,7 @@ export class EditMemberComponent implements OnInit {
 
   member: any;
 
-  constructor(private ds: DataService) { }
+  constructor(private ds: DataService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.member = this.ds.SharedData
@@ -57,6 +58,7 @@ export class EditMemberComponent implements OnInit {
               icon: 'success',
               confirmButtonColor: '#004643',
             });
+            this.dialog.closeAll();
           }
         });
       }

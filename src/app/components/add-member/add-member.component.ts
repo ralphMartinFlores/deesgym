@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DataService } from 'src/app/services/data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { formatDate as ngFormatDate } from "@angular/common";
+import { LOCALE_ID } from "@angular/core";
 
 @Component({
   selector: 'app-add-member',
@@ -9,17 +12,19 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class AddMemberComponent implements OnInit {
 
-  ngOnInit(): void {}
-  constructor(private ds: DataService) { }
+  private localID: string;
 
-  addMemberAlert() {
+  ngOnInit() {
   }
+  constructor(private ds: DataService, private dialog: MatDialog) { }
+
 
   sendMessage(): void {
     this.ds.sendUpdate('Message from Sender Component to Receiver Component!');
   }
 
   onSubmit(e: any) {
+    let date = new Date()
     let f = e.target.elements
     let load = {
       member_fname: f.fname.value,
@@ -31,6 +36,8 @@ export class AddMemberComponent implements OnInit {
       member_street: f.street.value,
       member_barangay: f.barangay.value,
       member_city: f.city.value,
+      member_membershipdate: new Date(),
+      member_membershipexp: date.toISOString().slice(0,10)
     }
 
     Swal.fire({
@@ -52,11 +59,11 @@ export class AddMemberComponent implements OnInit {
               icon: 'success',
               confirmButtonColor: '#004643',
             });
+            this.dialog.closeAll();
           }
         });
       }
     });
-    console.log(load)
   }
 
 }

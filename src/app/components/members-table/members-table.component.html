@@ -122,11 +122,17 @@
               <ng-container matColumnDef="address">
                 <th mat-header-cell *matHeaderCellDef>Address</th>
                 <td mat-cell *matCellDef="let element">
-                  {{ element.memberr_houseno }} {{ element.member_street }} {{ element.member_barangay }} {{ element.member_city }}
+                  {{ element.member_houseno }} {{ element.member_street }} {{ element.member_barangay }} {{ element.member_city }}
                 </td>
               </ng-container>
               <ng-container matColumnDef="membership_date">
                 <th mat-header-cell *matHeaderCellDef>Membership Date</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.created_at | date: 'yyyy-MM-dd' }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="membership_exp">
+                <th mat-header-cell *matHeaderCellDef>Membership Expiration</th>
                 <td mat-cell *matCellDef="let element">
                   {{ element.created_at | date: 'yyyy-MM-dd' }}
                 </td>
