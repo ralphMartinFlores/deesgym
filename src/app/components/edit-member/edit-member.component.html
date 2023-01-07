@@ -13,21 +13,22 @@
     />
   </div>
   <div>
-    <form action="">
+    <form (submit)="onSubmit($event)">
       <div>
         <p class="form__header">Details</p>
+        <input hidden id="id" [value]="member.member_id" disabled/>
         <div class="form__flex__container">
           <mat-form-field class="example-full-width">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="John" />
+            <input id="fname" [value]="member.member_fname" matInput placeholder="John" />
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Middle Name</mat-label>
-            <input matInput />
+            <input id="mname" [value]="member.member_mname" matInput />
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Doe" />
+            <input id="lname" [value]="member.member_lname" matInput placeholder="Doe" />
           </mat-form-field>
         </div>
       </div>
@@ -36,11 +37,11 @@
         <div class="form__flex__container">
           <mat-form-field class="example-full-width">
             <mat-label>Contact #</mat-label>
-            <input matInput placeholder="09xxxxxxxxx" />
+            <input id="mobile" [value]="member.member_mobilenum" matInput placeholder="09xxxxxxxxx" />
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="johndoe@email.com" />
+            <input id="email" [value]="member.member_email" type="email" matInput placeholder="johndoe@email.com" />
           </mat-form-field>
         </div>
       </div>
@@ -49,30 +50,28 @@
         <div class="form__flex__container">
           <mat-form-field class="example-full-width">
             <mat-label>House Number</mat-label>
-            <input matInput />
+            <input id="houseno" [value]="member.member_houseno" matInput />
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Street Name</mat-label>
-            <input matInput />
+            <input id="street" [value]="member.member_street" matInput />
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Barangay</mat-label>
-            <mat-select>
-              <mat-option>Sample Option</mat-option>
-              <mat-option>Sample Option</mat-option>
-              <mat-option>Sample Option</mat-option>
-            </mat-select>
+            <input id="barangay" [value]="member.member_barangay" matInput />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>City</mat-label>
+            <input id="city" [value]="member.member_city" matInput />
           </mat-form-field>
         </div>
       </div>
+      <div class="modal__btn">
+        <button type="submit" mat-flat-button color="primary">Save Changes</button>
+        <button mat-stroked-button color="primary" mat-dialog-close="">
+          Cancel
+        </button>
+      </div>
     </form>
-  </div>
-  <div class="modal__btn">
-    <button mat-flat-button color="primary" (click)="updateMemberAlert()">
-      Save Changes
-    </button>
-    <button mat-stroked-button color="primary" mat-dialog-close="">
-      Cancel
-    </button>
   </div>
 </div>

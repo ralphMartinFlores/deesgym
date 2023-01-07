@@ -95,11 +95,11 @@
                             break;
                         
                         case 'update':
-                            echo json_encode($gm->update($request[0]."_tbl", $d, "category_id = $request[2]"), JSON_PRETTY_PRINT);
+                            echo json_encode($gm->update($request[0]."_tbl", $d, "member_id = $request[2]"), JSON_PRETTY_PRINT);
                             break;
 
                         case 'remove':
-                            echo json_encode($gm->remove($request[0]."_tbl", "category_id = $request[2]"), JSON_PRETTY_PRINT);
+                            echo json_encode($gm->remove($request[0]."_tbl", "member_id = $request[2]"), JSON_PRETTY_PRINT);
                             break;
 
                         default:

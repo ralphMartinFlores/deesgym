@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AddTransactionComponent } from './components/add-transaction/add-transaction.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,11 @@ import { AddTransactionComponent } from './components/add-transaction/add-transa
     AddTransactionComponent,
   ],
   imports: [
+    BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    RouterModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,

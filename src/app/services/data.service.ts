@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-
+  SharedData: any;
   public prefix: string = 'GC'; 
   public baseURL: string = 'http://localhost/deesgym/backend/';
   public nodeBaseURL: string = 'gordoncollegeccs.edu.ph:4230/nodeapi/' // NODE
@@ -17,14 +18,22 @@ export class DataService {
   // public prefix: string; 
   public booksURL: string = "https://gordoncollegeccs.edu.ph/downloads/books/"
  
-
-
   constructor(private _http: HttpClient) {
     // this.baseURL = cfg.baseURL
     // this.fileUrl = cfg.fileUrl
     // this.prefix = cfg.prefix
     // this.imageURL = cfg.imgURL
-   }
+  }
+
+  private subject = new Subject<any>();
+
+  sendUpdate(message: string) {
+    this.subject.next({ text: message });
+  }
+
+  getUpdate(): Observable<any> {
+    return this.subject.asObservable();
+  }
   
   _httpRequest(api: string, load: any, sw: number) {
     this.baseURL = 'http://localhost/deesgym/backend/';

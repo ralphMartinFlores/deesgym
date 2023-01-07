@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-add-member',
@@ -7,11 +8,31 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-member.component.scss'],
 })
 export class AddMemberComponent implements OnInit {
-  constructor() {}
 
   ngOnInit(): void {}
+  constructor(private ds: DataService) { }
 
   addMemberAlert() {
+  }
+
+  sendMessage(): void {
+    this.ds.sendUpdate('Message from Sender Component to Receiver Component!');
+  }
+
+  onSubmit(e: any) {
+    let f = e.target.elements
+    let load = {
+      member_fname: f.fname.value,
+      member_mname: f.mname.value,
+      member_lname: f.lname.value,
+      member_mobilenum: f.mobile.value,
+      member_email: f.email.value,
+      member_houseno: f.houseno.value,
+      member_street: f.street.value,
+      member_barangay: f.barangay.value,
+      member_city: f.city.value,
+    }
+
     Swal.fire({
       title: 'All good?',
       text: 'You are about to add a new member, do you wish to proceed?',
@@ -22,13 +43,20 @@ export class AddMemberComponent implements OnInit {
       confirmButtonText: 'Yes, complete membership.',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Success',
-          text: 'This member has been added.',
-          icon: 'success',
-          confirmButtonColor: '#004643',
+        this.ds._httpRequest('members/add', load, 2).subscribe((data:any)=>{
+          if(data.code == 200) {
+            this.sendMessage();
+            Swal.fire({
+              title: 'Success',
+              text: 'This member has been added.',
+              icon: 'success',
+              confirmButtonColor: '#004643',
+            });
+          }
         });
       }
     });
+    console.log(load)
   }
+
 }
