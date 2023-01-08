@@ -57,10 +57,19 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
   dataSource = new MatTableDataSource<MembersData>(this.members);
   ngOnInit(): void {
     this.getMembers();
+    this.updateMembers();
   }
 
   sendMessage(): void {
     this.ds.sendUpdate('Message from Sender Component to Receiver Component!');
+  }
+
+  updateMembers() {
+    this.ds._httpRequest('members/update_status/', null, 2).subscribe((data:any)=>{
+      if(data.code == 200) {
+        // this.sendMessage();
+      }
+    });
   }
 
   getMembers() {
@@ -106,6 +115,31 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
     });
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  logout() {
+    Swal.fire({
+      title: 'Wait a second',
+      text: 'Are you sure you want to logout?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#004643',
+      cancelButtonColor: '#e16162',
+      confirmButtonText: 'Confirm',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/login'])
+      }
+    });
+  }
+
   openDialog() {
     let dialogRef = this.dialog.open(EditMemberComponent, {
       height: '90vh',
@@ -147,6 +181,7 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
       this.opened = true;
     }
   }
+  
   isBiggerScreen() {
     const width =
       window.innerWidth ||
@@ -159,7 +194,6 @@ export class MembersTableComponent implements AfterViewInit, OnInit {
     }
   }
 
-  removeMemberAlert() {}
 }
 
 export interface MembersData {}

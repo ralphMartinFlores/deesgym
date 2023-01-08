@@ -4,26 +4,14 @@
     header("Content-type: application/json; charset=utf-8");
     header("Access-Control-Allow-Methods: POST, GET");
     
-    
-    
     // TIME ZONE
     date_default_timezone_set('Australia/Sydney');
-
-
 
     // IMPORTS
     require_once("./models/Get.php");
     require_once("./models/Post.php");
-    require_once("./models/Contact.php");
     require_once("./models/Global.php");
     require_once("./models/Auth.php");
-    require_once("./models/Procedural.php");
-    require_once("./models/Otp.php");
-    require_once("./models/Invoice.php");
-    require_once("./models/Order.php");
-    require_once("./models/Stripe.php");
-
-
 
     // Model
     define("DB", "deesgym_db");

@@ -10,9 +10,6 @@
     $get = new Get($pdo);
     $gm = new GlobalMethods($pdo);
     $post = new Post($pdo);
-    $otp = new Otp();
-    $invoice = new Invoice();
-    $order = new Order();
 
 
     // VALIDATE REQUEST
@@ -32,7 +29,7 @@
             switch($request[0]) {
                 case 'members':
                     if (count($request) > 1) {
-                        echo json_encode($gm->exec_query($request[0]."_tbl", $request[1]), JSON_PRETTY_PRINT);
+                        echo json_encode($gm->exec_query($request[0]."_tbl", "member_status = $request[1]"), JSON_PRETTY_PRINT);
                     } else {
                         echo json_encode($gm->exec_query($request[0]."_tbl", null), JSON_PRETTY_PRINT);
                     }
@@ -67,6 +64,10 @@
                         
                         case 'update':
                             echo json_encode($gm->update($request[0]."_tbl", $d, "member_id = $request[2]"), JSON_PRETTY_PRINT);
+                            break;
+
+                        case 'update_status':
+                            echo json_encode($post->updateStatus($request[0]."_tbl", $d), JSON_PRETTY_PRINT);
                             break;
 
                         case 'remove':

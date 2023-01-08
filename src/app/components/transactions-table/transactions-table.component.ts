@@ -14,6 +14,7 @@ import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transactions-table',
@@ -35,7 +36,11 @@ export class TransactionsTableComponent implements AfterViewInit, OnInit{
   message: any;
   private subs: Subscription;
 
-  constructor(public dialog: MatDialog, private ds: DataService, private datepipe: DatePipe) {
+  constructor(
+    public dialog: MatDialog, 
+    private ds: DataService, 
+    private datepipe: DatePipe,
+    private router: Router) {
     this.subs = this.ds.getUpdate().subscribe(message => {
       this.message = message;
       this.ngOnInit();
@@ -89,6 +94,22 @@ export class TransactionsTableComponent implements AfterViewInit, OnInit{
             this.dialog.closeAll();
           }
         });
+      }
+    });
+  }
+
+  logout() {
+    Swal.fire({
+      title: 'Wait a second',
+      text: 'Are you sure you want to logout?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#004643',
+      cancelButtonColor: '#e16162',
+      confirmButtonText: 'Confirm',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/login'])
       }
     });
   }

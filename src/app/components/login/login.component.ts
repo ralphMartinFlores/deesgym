@@ -36,15 +36,6 @@ export class LoginComponent implements OnInit {
         console.log(dt);
 
         if (dt.status.remarks === 'success') {
-          // this.user.setLoading(false);
-          // this._snackbar.open("Welcome, "+data.payload.fullname +"!", "", {duration:1500});
-          // this.user.setUserData(data.payload);
-          // this.user.setProfilePicture(data.payload.img);
-          // this.user.setLoginState();
-
-          // if (data.payload.reset == 0) {
-          //   this.changePassword();
-          // } else {
           Swal.fire({
             title: 'Success',
             text: 'Welcome, Admin!',
@@ -55,15 +46,20 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['members']);
             }
           });
-          // }
         } else {
-          // this.errMsg = data.status.message;
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Incorrect Username or Password',
+          })
         }
       },
       (er: any) => {
-        // let data = this.user._decrypt(er.error.a);
-        // this.user.setLoading(false);
-        // this.errMsg = data.status.message;
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Incorrect Username or Password',
+        })
       }
     );
   }

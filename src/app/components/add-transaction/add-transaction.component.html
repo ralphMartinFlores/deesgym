@@ -44,25 +44,36 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field> -->
-      <mat-form-field class="example-full-width">
-        <mat-label>Search for a member</mat-label>
-        <input
-          [formControl]="memberAutoComplete"
-          [matAutocomplete]="auto"
-          matInput
-          placeholder="Juan Dela Cruz"
-          [(ngModel)]="filterTerm"
-        />
-        <button matSuffix mat-icon-button aria-label="Search">
-          <mat-icon>search</mat-icon>
-        </button>
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let member of members | filter : filterTerm">
-            {{ member.member_fname }} {{ member.member_mname }}
-            {{ member.member_lname }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+      <form (submit)="onSubmit($event)">
+        <mat-form-field class="example-full-width">
+          <mat-label>Search for a member</mat-label>
+          <input
+            id="name"
+            [formControl]="memberAutoComplete"
+            [matAutocomplete]="auto"
+            matInput
+            placeholder="Juan Dela Cruz"
+            [(ngModel)]="filterTerm"
+          />
+          <button matSuffix mat-icon-button aria-label="Search">
+            <mat-icon>search</mat-icon>
+          </button>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let member of members | filter : filterTerm" value="{{member.member_lname}}, {{member.member_fname}} {{member.member_mname}}">
+              {{ member.member_fname }} {{ member.member_mname }}
+              {{ member.member_lname }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div class="modal__btn">
+          <button type="submit" mat-flat-button color="primary">
+            Finish Transaction
+          </button>
+          <button mat-stroked-button color="primary" mat-dialog-close>
+            Cancel
+          </button>
+        </div>
+      </form>
     </div>
     <div class="form__walkin" *ngIf="form.value.radio == 1">
       <form (submit)="onSubmit($event)">
