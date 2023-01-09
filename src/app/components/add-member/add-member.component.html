@@ -13,13 +13,26 @@
     />
   </div>
   <div>
-    <form (submit)="onSubmit($event)">
+    <form (submit)="onSubmit($event)" [formGroup]="addMemberForm">
       <div>
         <p class="form__header">Details</p>
         <div class="form__flex__container">
           <mat-form-field class="example-full-width">
             <mat-label>First Name</mat-label>
-            <input id="fname" matInput placeholder="John" />
+            <input
+              id="fname"
+              formControlName="firstName"
+              matInput
+              placeholder="John"
+            />
+            <mat-error *ngIf="submitted && f['firstName'].errors">
+              <p *ngIf="f['firstName'].errors['required']">
+                First name is <strong>required</strong>
+              </p>
+              <p *ngIf="f['firstName'].errors['minlength']">
+                First name must be at least 2 characters.
+              </p>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Middle Name</mat-label>
@@ -27,7 +40,20 @@
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Last Name</mat-label>
-            <input id="lname" matInput placeholder="Doe" />
+            <input
+              id="lname"
+              formControlName="lastName"
+              matInput
+              placeholder="Doe"
+            />
+            <mat-error *ngIf="submitted && f['lastName'].errors">
+              <p *ngIf="f['lastName'].errors['required']">
+                Last name is <strong>required</strong>
+              </p>
+              <p *ngIf="f['lastName'].errors['minlength']">
+                Last name must be at least 2 characters.
+              </p>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -36,11 +62,44 @@
         <div class="form__flex__container">
           <mat-form-field class="example-full-width">
             <mat-label>Contact #</mat-label>
-            <input id="mobile" matInput placeholder="09xxxxxxxxx" />
+            <input
+              id="mobile"
+              formControlName="contactNumber"
+              matInput
+              placeholder="09xxxxxxxxx"
+            />
+            <mat-error *ngIf="submitted && f['contactNumber'].errors">
+              <p *ngIf="f['contactNumber'].errors['required']">
+                Contact # is <strong>required</strong>
+              </p>
+              <p *ngIf="f['contactNumber'].errors['minlength']">
+                Contact # must be 11 numbers long.
+              </p>
+              <p *ngIf="f['contactNumber'].errors['maxlength']">
+                Contact # must be 11 numbers long.
+              </p>
+              <p *ngIf="f['contactNumber'].errors['pattern']">
+                Contact # must not contain any letters.
+              </p>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
-            <input id="email" type="email" matInput placeholder="johndoe@email.com" />
+            <input
+              id="email"
+              formControlName="email"
+              type="email"
+              matInput
+              placeholder="johndoe@email.com"
+            />
+            <mat-error *ngIf="submitted && f['email'].errors">
+              <p *ngIf="f['email'].errors['required']">
+                Email is <strong>required</strong>
+              </p>
+              <p *ngIf="f['email'].errors['pattern']">
+                Please enter a valid email address.
+              </p>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -49,25 +108,49 @@
         <div class="form__flex__container">
           <mat-form-field class="example-full-width">
             <mat-label>House Number</mat-label>
-            <input id="houseno" matInput />
+            <input id="houseno" formControlName="houseNumber" matInput />
+            <mat-error *ngIf="submitted && f['houseNumber'].errors">
+              <p *ngIf="f['houseNumber'].errors['required']">
+                House number is <strong>required</strong>
+              </p>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Street Name</mat-label>
-            <input id="street" matInput />
+            <input id="street" formControlName="streetName" matInput />
+            <mat-error *ngIf="submitted && f['streetName'].errors">
+              <p *ngIf="f['streetName'].errors['required']">
+                Street name is <strong>required</strong>
+              </p>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Barangay</mat-label>
-            <input id="barangay" matInput />
+            <input id="barangay" formControlName="barangay" matInput />
+            <mat-error *ngIf="submitted && f['barangay'].errors">
+              <p *ngIf="f['barangay'].errors['required']">
+                Barangay is <strong>required</strong>
+              </p>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>City</mat-label>
-            <input id="city" matInput />
+            <input id="city" formControlName="city" matInput />
+            <mat-error *ngIf="submitted && f['city'].errors">
+              <p *ngIf="f['city'].errors['required']">
+                City is <strong>required</strong>
+              </p>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
       <div class="modal__btn">
-        <button type="submit" mat-flat-button color="primary">Add Member</button>
-        <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
+        <button type="submit" mat-flat-button color="primary">
+          Add Member
+        </button>
+        <button mat-stroked-button color="primary" mat-dialog-close>
+          Cancel
+        </button>
       </div>
     </form>
   </div>

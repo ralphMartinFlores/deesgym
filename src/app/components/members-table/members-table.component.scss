@@ -140,4 +140,14 @@ img {
       display: block;
     }
   }
+  td.mat-cell,
+  td.mat-footer-cell {
+    padding: 8px 0px;
+    &:first-of-type {
+      padding-left: 24px;
+    }
+    &:last-of-type {
+      display: flex;
+    }
+  }
 }

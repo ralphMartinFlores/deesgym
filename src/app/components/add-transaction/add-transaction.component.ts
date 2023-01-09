@@ -24,6 +24,9 @@ export class AddTransactionComponent implements OnInit {
 
   members: any = [];
   form: FormGroup;
+
+  walkInForm!: FormGroup;
+  submitted = false;
   constructor(
     private fb: FormBuilder,
     private ds: DataService,
@@ -41,6 +44,15 @@ export class AddTransactionComponent implements OnInit {
     this.form = this.fb.group({
       radio: new FormControl('', Validators.required),
     });
+
+    this.walkInForm = this.fb.group({
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
+    });
+  }
+
+  get f() {
+    return this.walkInForm.controls;
   }
 
   sendMessage(): void {
@@ -55,53 +67,59 @@ export class AddTransactionComponent implements OnInit {
   }
 
   onSubmit(e: any) {
-    let date = new Date();
-    let type = '';
-    let f = e.target.elements;
-    let load = {}
-    if (this.form.value.radio == 1) {
-      type = 'Walk-In';
-      load = {
-        trans_name: f.lname.value + ', ' + f.fname.value + ' ' + f.mname.value,
-        trans_type: type,
-        trans_date: this.datepipe.transform(date, 'yyyy-MM-dd'),
-        trans_timein: this.datepipe.transform(date, 'hh:mm a'),
-      };
+    this.submitted = true;
+    if (this.walkInForm.invalid) {
+      console.log('Walk in Form Message: Form is invalid.');
     } else {
-      type = 'Member';
-      load = {
-        trans_name: f.name.value,
-        trans_type: type,
-        trans_date: this.datepipe.transform(date, 'yyyy-MM-dd'),
-        trans_timein: this.datepipe.transform(date, 'hh:mm a'),
-      };
-    }
-
-    Swal.fire({
-      title: 'All good?',
-      text: 'You are about to add a new transaction, do you wish to proceed?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#004643',
-      cancelButtonColor: '#e16162',
-      confirmButtonText: 'Yes, complete transaction.',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.ds
-          ._httpRequest('transactions/add', load, 2)
-          .subscribe((data: any) => {
-            if (data.code == 200) {
-              this.sendMessage();
-              Swal.fire({
-                title: 'Success',
-                text: 'This transaction has been made.',
-                icon: 'success',
-                confirmButtonColor: '#004643',
-              });
-              this.dialog.closeAll();
-            }
-          });
+      let date = new Date();
+      let type = '';
+      let f = e.target.elements;
+      let load = {};
+      if (this.form.value.radio == 1) {
+        type = 'Walk-In';
+        load = {
+          trans_name:
+            f.lname.value + ', ' + f.fname.value + ' ' + f.mname.value,
+          trans_type: type,
+          trans_date: this.datepipe.transform(date, 'yyyy-MM-dd'),
+          trans_timein: this.datepipe.transform(date, 'hh:mm a'),
+        };
+      } else {
+        type = 'Member';
+        load = {
+          trans_name: f.name.value,
+          trans_type: type,
+          trans_date: this.datepipe.transform(date, 'yyyy-MM-dd'),
+          trans_timein: this.datepipe.transform(date, 'hh:mm a'),
+        };
       }
-    });
+
+      Swal.fire({
+        title: 'All good?',
+        text: 'You are about to add a new transaction, do you wish to proceed?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#004643',
+        cancelButtonColor: '#e16162',
+        confirmButtonText: 'Yes, complete transaction.',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.ds
+            ._httpRequest('transactions/add', load, 2)
+            .subscribe((data: any) => {
+              if (data.code == 200) {
+                this.sendMessage();
+                Swal.fire({
+                  title: 'Success',
+                  text: 'This transaction has been made.',
+                  icon: 'success',
+                  confirmButtonColor: '#004643',
+                });
+                this.dialog.closeAll();
+              }
+            });
+        }
+      });
+    }
   }
 }

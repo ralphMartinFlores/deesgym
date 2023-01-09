@@ -59,7 +59,12 @@
             <mat-icon>search</mat-icon>
           </button>
           <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let member of members | filter : filterTerm" value="{{member.member_lname}}, {{member.member_fname}} {{member.member_mname}}">
+            <mat-option
+              *ngFor="let member of members | filter : filterTerm"
+              value="{{ member.member_lname }}, {{ member.member_fname }} {{
+                member.member_mname
+              }}"
+            >
               {{ member.member_fname }} {{ member.member_mname }}
               {{ member.member_lname }}
             </mat-option>
@@ -75,12 +80,29 @@
         </div>
       </form>
     </div>
-    <div class="form__walkin" *ngIf="form.value.radio == 1">
-      <form (submit)="onSubmit($event)">
+    <div
+      class="form__walkin"
+      *ngIf="form.value.radio == 1"
+      [formGroup]="walkInForm"
+    >
+      <form (submit)="onSubmit($event)" [formGroup]="walkInForm">
         <p class="form__header">Details</p>
         <mat-form-field class="example-full-width">
           <mat-label>First Name</mat-label>
-          <input id="fname" matInput placeholder="Juan" />
+          <input
+            id="fname"
+            formControlName="firstName"
+            matInput
+            placeholder="Juan"
+          />
+          <mat-error *ngIf="submitted && f['firstName'].errors">
+            <p *ngIf="f['firstName'].errors['required']">
+              First name is <strong>required</strong>
+            </p>
+            <p *ngIf="f['firstName'].errors['minlength']">
+              First name must be at least 2 characters.
+            </p>
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Middle Name</mat-label>
@@ -88,7 +110,20 @@
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Last Name</mat-label>
-          <input id="lname" matInput placeholder="Dela Cruz" />
+          <input
+            id="lname"
+            formControlName="lastName"
+            matInput
+            placeholder="Dela Cruz"
+          />
+          <mat-error *ngIf="submitted && f['lastName'].errors">
+            <p *ngIf="f['lastName'].errors['required']">
+              Last name is <strong>required</strong>
+            </p>
+            <p *ngIf="f['lastName'].errors['minlength']">
+              Last name must be at least 2 characters.
+            </p>
+          </mat-error>
         </mat-form-field>
         <div class="modal__btn">
           <button type="submit" mat-flat-button color="primary">

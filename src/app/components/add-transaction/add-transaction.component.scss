@@ -47,6 +47,12 @@ mat-radio-group {
     font-family: "General Sans", sans-serif;
   }
 }
+mat-error {
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+}
 @media screen and (min-width: 768px) {
   .illustration__container {
     display: block;
