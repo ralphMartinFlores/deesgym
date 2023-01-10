@@ -44,15 +44,31 @@
             <div>
               <div class="greetings__flex__container">
                 <h1>Members</h1>
-                <button
-                  mat-fab
-                  color="primary"
-                  (click)="openAddMemberDialog()"
-                  matTooltip="Add a member"
-                  matTooltipPosition="above"
-                >
-                  <mat-icon>person_add</mat-icon>
-                </button>
+                <div>
+                  <button
+                    mat-fab
+                    color="primary"
+                    (click)="openAddMemberDialog()"
+                    matTooltip="Add a member"
+                    matTooltipPosition="above"
+                  >
+                    <mat-icon>person_add</mat-icon>
+                  </button>
+                  <button
+                    mat-fab
+                    color="primary"
+                    matTooltip="Export to CSV"
+                    matTooltipPosition="above"
+                    class="add__search__excel__btn"
+                  >
+                    <img
+                      src="assets/images/excel.png"
+                      alt="Excel logo"
+                      loading="lazy"
+                      class="add__search__excel__img"
+                    />
+                  </button>
+                </div>
               </div>
               <p>
                 Keep Track of Your Gym's Registered Users: Quickly Add, Modify,
@@ -94,6 +110,20 @@
               matTooltipPosition="above"
             >
               <mat-icon>person_add</mat-icon>
+            </button>
+            <button
+              mat-fab
+              color="primary"
+              matTooltip="Export to CSV"
+              matTooltipPosition="above"
+              class="add__search__excel__btn"
+            >
+              <img
+                src="assets/images/excel.png"
+                alt="Excel logo"
+                loading="lazy"
+                class="add__search__excel__img"
+              />
             </button>
           </div>
           <!-- End -->
