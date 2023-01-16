@@ -1,6 +1,6 @@
 .example-full-width {
   width: 100%;
-  font-family: "General Sans", sans-serif;
+  font-family: var(--ff-secondary);
 }
 .modal__btn {
   display: flex;
@@ -8,7 +8,9 @@
   gap: 8px;
   margin-top: 16px;
   button {
-    font-family: "General Sans", sans-serif;
+    font-family: var(--ff-primary);
+    font-weight: bold;
+    letter-spacing: 1px;
   }
   .mat-flat-button {
     transition: all 0.3s;
@@ -21,12 +23,14 @@
   display: none;
 }
 .form__header {
-  font-weight: 600;
+  font-family: var(--ff-primary);
+  font-weight: bold;
   font-size: 24px;
   color: #001e1d;
 }
 h1 {
   color: #001e1d;
+  font-family: var(--ff-primary);
 }
 .modal__header__container {
   display: flex;
@@ -44,7 +48,7 @@ mat-radio-group {
   gap: 1rem;
   margin-bottom: 1.5rem;
   mat-radio-button {
-    font-family: "General Sans", sans-serif;
+    font-family: var(--ff-secondary);
   }
 }
 mat-error {
@@ -59,6 +63,15 @@ mat-error {
     text-align: center;
     img {
       max-width: 70%;
+    }
+  }
+  .modal__btn {
+    button {
+      font-family: var(--ff-primary);
+      font-weight: bold;
+      letter-spacing: 1px;
+      padding: 4px 32px;
+      border-radius: 100px;
     }
   }
 }

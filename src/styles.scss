@@ -1,11 +1,16 @@
+:root {
+  --ff-primary: "Montserrat", sans-serif;
+  --ff-secondary: "Roboto", sans-serif;
+  --clr-body: #abd1c6;
+}
 html,
 body {
   height: 100%;
 }
 body {
   margin: 0;
-  background-color: #abd1c6;
-  font-family: "General Sans", sans-serif;
+  background-color: var(--clr-body);
+  font-family: var(--ff-secondary);
 }
 @media screen and (min-width: 576px) {
   main {
@@ -33,8 +38,9 @@ main {
   margin-right: auto;
 }
 .toolbar__heading {
-  font-family: "General Sans", sans-serif;
+  font-family: var(--ff-primary);
+  font-weight: bold;
 }
 .mat-option-text {
-  font-family: "General Sans", sans-serif;
+  font-family: var(--ff-secondary);
 }

@@ -1,6 +1,7 @@
 table {
   width: 100%;
-  font-family: "General Sans", sans-serif;
+  font-family: var(--ff-secondary);
+  font-weight: 500;
 }
 .greetings__flex__container {
   display: flex;
@@ -16,13 +17,13 @@ table {
     display: none;
   }
   h1 {
-    font-family: "General Sans", sans-serif;
+    font-family: var(--ff-primary);
     font-size: clamp(32px, 5vw, 64px);
     margin: 0;
     color: #001e1d;
   }
   p {
-    font-family: "General Sans", sans-serif;
+    font-family: var(--ff-secondary);
     font-size: clamp(0.875em, 2.5vw, 1em);
     margin: 0 0 16px 0;
     line-height: 1.6;
@@ -55,7 +56,7 @@ td.mat-footer-cell {
 }
 .search__input {
   width: 100%;
-  font-family: "General Sans", sans-serif;
+  font-family: var(--ff-secondary);
 }
 .add__search__flex__container {
   .mat-fab {
@@ -89,13 +90,14 @@ mat-sidenav {
 }
 .mat-list-item {
   color: #fffffe;
-  font-family: "General Sans", sans-serif;
+  font-family: var(--ff-primary);
 }
 .isActive {
   border-radius: 0 25px 25px 0;
   background-color: #f9bc60;
   color: #001e1d;
   transition: all 0.3s;
+  font-weight: bold;
   &:hover {
     background-color: #f7a72f;
   }
